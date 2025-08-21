@@ -21,6 +21,6 @@ def has_reasoned(state:State) -> State:
 	
 set_llm_cache(SQLiteCache(database_path=".langchain.db"))
     
-llm = ChatAnthropic(model="claude-3-5-sonnet-20241022")
+llm = ChatAnthropic(model="claude-3-5-sonnet-20241022", api_key=os.getenv("ANTHROPIC_API_KEY"))
 #llm = ChatOllama(model="qwen3:8b", temperature=0.05)
 
