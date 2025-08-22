@@ -8,6 +8,7 @@ from typing_extensions import TypedDict
 from langchain_anthropic import ChatAnthropic
 from langchain_community.cache import SQLiteCache
 from langchain.globals import set_llm_cache
+import os
 
 load_dotenv()
 
