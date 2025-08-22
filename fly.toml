@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for langgraph-ebay-shopper-dark-frog-4340 on 2025-08-22T00:16:03-04:00
+# fly.toml app configuration file generated for langgraph-ebay-shopper-crimson-frog-7378 on 2025-08-22T14:35:11-04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'langgraph-ebay-shopper-dark-frog-4340'
+app = 'langgraph-ebay-shopper-crimson-frog-7378'
 primary_region = 'iad'
 
 [build]
