@@ -6,12 +6,12 @@ import base64
 
 def token_gen(is_sandbox:bool = False):
     load_dotenv()
-    credentials = {"appid":os.getenv("APPID"), "certid":os.getenv("CERTID")}
+    appid, certid = (os.getenv('APPID'),os.getenv('CERTID'))
+    credentials = f"{appid}:{certid}"
     # Prepare security authorization url
     url = "https://api.ebay.com/identity/v1/oauth2/token"
     # Prepare credentials
-    cred_string = f"{credentials['appid']}:{credentials['certid']}"
-    EBAY_APP_ID = credentials['appid']		
+    EBAY_APP_ID = appid		
     credentials_b64 = base64.b64encode(credentials.encode()).decode()
     headers = {
 		'Content-Type': 'application/x-www-form-urlencoded',
