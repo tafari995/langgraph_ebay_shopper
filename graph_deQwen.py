@@ -3,7 +3,7 @@ from langgraph.graph import StateGraph, START, END
 from langgraph.prebuilt import ToolNode
 from langgraph.types import interrupt, Command
 
-from taf_main import State, has_reasoned
+from taf_main import State, has_reasoned, config
 from tools import tools
 from compact_agent import agent, checkpointer
 
@@ -27,7 +27,7 @@ def check_after_tools(state):
     return "continue"
 
 
-def agent_reasoner(state: State): 
+def agent_reasoner(state: State):
     ai_msg =f'''
         0) Extract a list of products to shop for from the user's query
         1) Search for each product the user is looking for using the ebay_product_finder tool 
@@ -94,34 +94,36 @@ graph_builder.add_conditional_edges(
 
 graph = graph_builder.compile(checkpointer=checkpointer)
 
-config = {"configurable" : {"thread_id": "1", "n_final": 5}}
 
+
+
+"""
 products = input(
-	"""
-	Which products are you looking for today?
-	"""
+    '''
+    Which products are you looking for today?
+    '''
 )
 state = {"messages":[{"role":"human", "content": products}], "r_counter": 0}
 
 result_state = graph.invoke(
     state,    
-	config    
+    config    
 )
 
 sentiments = input(
-    """
+    '''
     \n 
     ~ what are your top priorities and preferences in 
     the products you are looking for today? ~ 
     \n
-    """
+    '''
 )
 
 result_state_dos = graph.invoke(
     Command(resume = {"sentiments": sentiments } ),
     config
 )
-
+"""
 
 
 
